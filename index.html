@@ -16,7 +16,7 @@
         </script>
         
 <div id="container" tabindex="0"></div>
-<script type="text/javascript" src="//lbsapi.meituan.com/jsapi/maps?v=1.9.0-alpha.11&key=meb5fd96a2094622914fd8a04615794j&degrade=true"></script>
+<script type="text/javascript" src="//lbsapi.meituan.com/jsapi/maps?v=1.9.0-alpha.11&key=meb5fd96a2094622914fd8a04615794j&degrade=true&plugin=GeoLocateControl"></script>
         <!-- 避免未关闭的html影响到后续append进来的script -->
         <div></div>
         <script>/******/ (function(modules) { // webpackBootstrap
@@ -119,6 +119,15 @@ var map = new mtdpMap.Map({
     lazyRender:false,
     zoom: 10
 });
+
+const geoLocateControl = new mtdpMap.GeoLocateControl({
+  position: mtdpMap.ANCHOR_BOTTOM_RIGHT,
+  timeout: 8000
+});
+geoLocateControl.on('complete', (e) => {
+  console.log(e);
+})
+map.addControl(geoLocateControl);
 
 
       
